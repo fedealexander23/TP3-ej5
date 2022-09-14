@@ -18,7 +18,10 @@ switch ($params[0]) {
         showSubjects();
         break;
     case 'add':
-        showAdd();
+        addSubject();
+        break;
+    case 'delete':
+        deleteSubject($params[1]);
         break;
     default:
         echo('404 Page not found');

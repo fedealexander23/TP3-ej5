@@ -26,7 +26,7 @@ function showSubjects(){
     include './templates/footer.php';
 }
 
-function showAdd(){
+function addSubject(){
 
     $subject = $_POST['subject'];
     $teacher = $_POST['teacher'];
@@ -34,5 +34,10 @@ function showAdd(){
     insertSubject($subject, $teacher);
 
     header("Location: " . BASE_URL); 
+}
 
+
+function deleteSubject($id) {
+    deleteDebtById($id);
+    header("Location: " . BASE_URL); 
 }

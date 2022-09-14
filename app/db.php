@@ -20,5 +20,19 @@ function getAllSubjects() {
 }
 
 function insertSubject($subject, $teacher){
+    $db = getDB();
+    $query = $db->prepare("INSERT INTO subjects (subject, teacher) VALUES (?, ?)");
+    $query->execute([$subject, $teacher]);
 
+    return $db->lastInsertId();
+}
+
+function deleteDebtById($id) {
+    $db = getDB();
+    $query = $db->prepare('DELETE FROM debt WHERE id = ?');
+    $query->execute([$id]);
+}
+
+function  editDebtById($id){
+    
 }
