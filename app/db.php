@@ -29,7 +29,7 @@ function insertSubject($subject, $teacher){
 
 function deleteDebtById($id) {
     $db = getDB();
-    $query = $db->prepare('DELETE FROM debt WHERE id = ?');
+    $query = $db->prepare('DELETE FROM subjects WHERE id = ?');
     $query->execute([$id]);
 }
 
