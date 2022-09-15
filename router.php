@@ -23,6 +23,9 @@ switch ($params[0]) {
     case 'delete':
         deleteSubject($params[1]);
         break;
+    case 'edit':
+       editSubject($params[1]);
+        break;
     default:
         echo('404 Page not found');
         break;

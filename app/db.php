@@ -27,12 +27,13 @@ function insertSubject($subject, $teacher){
     return $db->lastInsertId();
 }
 
-function deleteDebtById($id) {
+function deleteSubjectById($id) {
     $db = getDB();
     $query = $db->prepare('DELETE FROM subjects WHERE id = ?');
     $query->execute([$id]);
 }
 
-function  editDebtById($id){
-    
+function  editDebtById($id, $subject, $teacher){
+    $db = getDB();
+    $db->query("UPDATE subjects SET subject = '$subject', teacher = '$teacher' WHERE id=$id");
 }

@@ -5,7 +5,6 @@ require_once './app/db.php';
 function subject(){
 
     $subjects = getAllSubjects();
-
     echo '<ul class="list-group">';
     foreach ($subjects as $sub) {
         echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
@@ -28,16 +27,34 @@ function showSubjects(){
 
 function addSubject(){
 
-    $subject = $_POST['subject'];
-    $teacher = $_POST['teacher'];
-
-    insertSubject($subject, $teacher);
+    if(isset($_POST['subject']) && ($_POST['teacher'])){
+        $subject = $_POST['subject'];
+        $teacher = $_POST['teacher'];
+        insertSubject($subject, $teacher);
+    }
 
     header("Location: " . BASE_URL); 
+
+    include './templates/footer.php';
 }
 
 
 function deleteSubject($id) {
-    deleteDebtById($id);
+    deleteSubjectById($id);
     header("Location: " . BASE_URL); 
+}
+
+function editSubject($id){
+
+    include './templates/header.php';
+    include './templates/form_edit.php';
+
+    if(isset($_POST['subject']) && ($_POST['teacher'])){ 
+        $subject = $_POST['subject'];
+        $teacher = $_POST['teacher'];
+        editDebtById($id, $subject, $teacher);
+        header("Location: " . BASE_URL); 
+    }
+
+    include './templates/footer.php';
 }
